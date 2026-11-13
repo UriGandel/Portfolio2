@@ -1,0 +1,192 @@
+---
+import Command from "./Command.astro";
+---
+
+<section id="sobre-mi" class="about" aria-labelledby="about-title">
+  <div>
+    <Command text="cat ./sobre-mi.md" />
+    <h2 id="about-title">Sobre mí</h2>
+    <div class="about-grid">
+      <div class="about-copy" data-terminal-file="sobre-mi.md">
+        <p>
+          Empecé a programar por curiosidad, queriendo entender cómo funcionaban
+          las cosas.
+        </p>
+        <p>
+          Hoy disfruto construir mis propios productos, experimentar con nuevas
+          tecnologías y resolver problemas difíciles.
+          <br />
+          Los hackathons se convirtieron en una de mis formas favoritas de
+          aprender: poco tiempo, problemas nuevos y el desafío de convertir una
+          idea en algo que funcione.
+        </p>
+        <p>
+          Me interesan especialmente los sistemas, la inteligencia artificial y
+          las startups.
+        </p>
+      </div>
+      <img
+        class="hackathon-photo"
+        src="/images/hackathon.png"
+        width="636"
+        height="353"
+        loading="lazy"
+        decoding="async"
+        alt="Participantes trabajando en equipo durante un hackathon"
+      />
+    </div>
+  </div>
+  <div class="community">
+    <Command text="cat ./comunidad.md" />
+    <p data-terminal-file="comunidad.md">
+      Soy educador no formal. Coordinar grupos me enseñó a liderar, comunicar y
+      trabajar en equipo.
+    </p>
+  </div>
+  <div class="awards">
+    <Command text="ls ./premios" />
+    <dl data-terminal-awards>
+      <div>
+        <dt>UdeSA AI Hackathon</dt>
+        <dd>1.er puesto · 2025</dd>
+      </div>
+      <div>
+        <dt>Platanus Hack</dt>
+        <dd>Ganador del Arcade Challenge · 2026</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding-top: 46px;
+    padding-bottom: 74px;
+  }
+  h2 {
+    font-size: 76px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 25px 0 48px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 545fr) minmax(0, 636fr);
+    gap: 64px;
+  }
+  .about-copy {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--muted);
+    padding-left: 3px;
+  }
+  .about-copy p {
+    margin: 0 0 30px;
+  }
+  .about-copy p:last-child {
+    margin-bottom: 0;
+  }
+  .hackathon-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 636 / 353;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-top: -43px;
+  }
+  .community {
+    margin-top: 53px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid var(--border);
+  }
+  .community > p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.55;
+    margin: 21px 0 0;
+  }
+  .awards {
+    padding-top: 31px;
+  }
+  dl {
+    margin: 23px 0 0;
+  }
+  dl > div {
+    display: grid;
+    grid-template-columns: 456px 1fr;
+    gap: 0;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+  dt {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 26px;
+  }
+  dd {
+    margin: 0;
+    font: 16px/20px var(--mono);
+    color: var(--muted);
+  }
+  @media (max-width: 1100px) {
+    .about-grid {
+      gap: 36px;
+    }
+    .about-copy {
+      font-size: 19px;
+      line-height: 28px;
+    }
+    dl > div {
+      grid-template-columns: 38% 1fr;
+      gap: 20px;
+    }
+  }
+  @media (max-width: 700px) {
+    .about {
+      padding-top: 40px;
+      padding-bottom: 35px;
+    }
+    h2 {
+      font-size: 48px;
+      margin: 20px 0 28px;
+    }
+    .about-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 26px;
+    }
+    .about-copy {
+      font-size: 17px;
+      line-height: 27px;
+      padding: 0;
+    }
+    .about-copy p {
+      margin-bottom: 22px;
+    }
+    .hackathon-photo {
+      margin: 0;
+    }
+    .community {
+      margin-top: 36px;
+      padding-bottom: 28px;
+    }
+    .community > p {
+      font-size: 17px;
+      line-height: 27px;
+      margin-top: 15px;
+    }
+    dl > div {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
+    dt {
+      font-size: 19px;
+    }
+    dd {
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+</style>

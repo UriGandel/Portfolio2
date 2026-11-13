@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TerminalBar from "../components/TerminalBar.astro";
+import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import TerminalInput from "../components/TerminalInput.astro";
+---
+
+<Layout>
+  <TerminalBar />
+  <main id="contenido" class="session">
+    <section id="inicio" class="hero" aria-labelledby="nombre">
+      <div class="hero-grid">
+        <div>
+          <h1 id="nombre">
+            Uriel
+            <br />
+            Gandelman
+          </h1>
+          <p class="role">Desarrollador de software</p>
+          <p class="intro">
+            Soy Uriel, desarrollador de Buenos Aires. Me gusta transformar ideas
+            en productos reales, explorar cómo funcionan los sistemas y
+            experimentar con inteligencia artificial. Desde aplicaciones que
+            llegan a usuarios hasta motores gráficos construidos desde cero.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#proyectos">
+              Ver proyectos ↓
+            </a>
+            <a class="button secondary" href="#sobre-mi">
+              Sobre mí
+            </a>
+          </div>
+        </div>
+        <TerminalInput />
+      </div>
+      <hr class="hero-divider" />
+    </section>
+    <Projects />
+    <About />
+    <Contact />
+  </main>
+</Layout>
+
+<script>
+  import "../scripts/terminal";
+</script>

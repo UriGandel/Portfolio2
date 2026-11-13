@@ -1,0 +1,114 @@
+---
+import Command from "./Command.astro";
+---
+
+<section id="contacto" class="contact" aria-labelledby="contact-title">
+  <Command text="./contacto.sh" />
+  <h2 id="contact-title">¿Construimos algo?</h2>
+  <p>Si tenés un proyecto en mente o querés charlar, escribime.</p>
+  <div class="actions" data-terminal-contact>
+    <a class="button primary" href="mailto:ugandelm@urielgandelman.dev">
+      Enviar un mail ↗
+    </a>
+    <a
+      class="button"
+      href="https://github.com/UriGandel"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub ↗
+    </a>
+    <a
+      class="button"
+      href="https://www.linkedin.com/in/uriel-gandelman/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      LinkedIn ↗
+    </a>
+  </div>
+  <footer>
+    <a href="#inicio">↑ Volver al inicio</a>
+  </footer>
+</section>
+
+<style>
+  .contact {
+    padding-top: 49px;
+    padding-bottom: 43px;
+  }
+  h2 {
+    font-size: clamp(52px, 6.12vw, 88px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin: 49px 0 28px;
+  }
+  .contact > p {
+    margin: 0 0 44px 5px;
+    color: var(--muted);
+    font-size: 23px;
+    line-height: 29px;
+  }
+  .actions {
+    padding-left: 5px;
+  }
+  .actions .button:first-child {
+    min-width: 208px;
+  }
+  .actions .button {
+    min-width: 136px;
+  }
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 21px;
+    margin-top: 49px;
+  }
+  footer a {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    color: var(--green);
+    font: 15px/22px var(--mono);
+  }
+  footer .cursor {
+    width: 7px;
+    height: 16px;
+  }
+  @media (max-width: 700px) {
+    .contact {
+      padding-top: 40px;
+      padding-bottom: 30px;
+    }
+    h2 {
+      font-size: clamp(36px, 11.8vw, 46px);
+      line-height: 1.06;
+      margin-top: 30px;
+      letter-spacing: -1.5px;
+    }
+    .contact > p {
+      margin-left: 0;
+      margin-bottom: 28px;
+      font-size: 19px;
+      line-height: 27px;
+    }
+    .actions {
+      padding-left: 0;
+      gap: 10px;
+    }
+    .actions .button {
+      min-width: 0;
+    }
+    .actions .button:first-child {
+      min-width: 0;
+    }
+    footer {
+      margin-top: 32px;
+    }
+    footer a {
+      font-size: 11px;
+      gap: 8px;
+    }
+  }
+</style>

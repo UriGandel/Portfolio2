@@ -1,0 +1,59 @@
+---
+import Command from "./Command.astro";
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<article
+  id={project.slug}
+  class:list={["project", project.color]}
+  aria-labelledby={`${project.slug}-title`}
+>
+  <Command text={`open ./proyectos/${project.slug}`} />
+  <div class="project-card">
+    <div class="project-info">
+      <p class="project-category">{project.category}</p>
+      <h3 id={`${project.slug}-title`}>{project.name}</h3>
+      <p class="project-description" data-terminal-description>
+        {project.description}
+      </p>
+      <p class="project-stack" data-terminal-stack>
+        {project.stack}
+      </p>
+      <div class="project-links" data-terminal-project-links>
+        {project.links.map((link) => (
+          <a
+            class="button"
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {link.label} ↗
+          </a>
+        ))}
+      </div>
+    </div>
+    <div
+      class:list={[
+        "project-preview",
+        {
+          phones: project.images.length > 1,
+          game: project.slug === "gravity-duel",
+        },
+      ]}
+    >
+      {project.images.map((image, index) => (
+        <img
+          src={`/images/${image}`}
+          alt={project.imageLabels[index]}
+          loading="lazy"
+          decoding="async"
+        />
+      ))}
+    </div>
+  </div>
+</article>
