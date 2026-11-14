@@ -6,46 +6,56 @@ interface Props {
   project: Project;
 }
 const { project } = Astro.props;
+const phones = project.images.length > 1;
+const sidePreview = phones && !project.featured;
 ---
 
 <article
   id={project.slug}
-  class:list={["project", project.color]}
+  class:list={["project", { featured: project.featured, side: sidePreview }]}
   aria-labelledby={`${project.slug}-title`}
 >
-  <Command text={`open ./proyectos/${project.slug}`} />
-  <div class="project-card">
+  <Command text={`cat ./proyectos/${project.slug}/README.md`} />
+  <div class="project-body">
     <div class="project-info">
-      <p class="project-category">{project.category}</p>
       <h3 id={`${project.slug}-title`}>{project.name}</h3>
       <p class="project-description" data-terminal-description>
         {project.description}
       </p>
-      <p class="project-stack" data-terminal-stack>
-        {project.stack}
-      </p>
       <div class="project-links" data-terminal-project-links>
         {project.links.map((link) => (
-          <a
-            class="button"
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {link.label} ↗
+          <a href={link.href} target="_blank" rel="noopener noreferrer">
+            {link.label}
           </a>
         ))}
       </div>
     </div>
-    <div
-      class:list={[
-        "project-preview",
-        {
-          phones: project.images.length > 1,
-          game: project.slug === "gravity-duel",
-        },
-      ]}
-    >
+    <div class="project-output">
+      <p>{project.outputLabel}</p>
+      <dl data-terminal-output>
+        {project.output.map(([key, value]) => (
+          <div>
+            <dt>{key}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    {sidePreview && (
+      <div class="project-preview phones">
+        {project.images.map((image, index) => (
+          <img
+            src={`/images/${image}`}
+            alt={project.imageLabels[index]}
+            loading="lazy"
+            decoding="async"
+          />
+        ))}
+      </div>
+    )}
+  </div>
+  {!sidePreview && project.images.length > 0 && (
+    <div class:list={["project-preview", { phones }]}>
       {project.images.map((image, index) => (
         <img
           src={`/images/${image}`}
@@ -55,5 +65,154 @@ const { project } = Astro.props;
         />
       ))}
     </div>
-  </div>
+  )}
 </article>
+
+<style>
+  .project {
+    padding: 48px 0 72px;
+    border-top: 1px solid var(--border);
+  }
+  .project-body {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 0 72px;
+    margin-top: 32px;
+  }
+  h3 {
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+  .featured h3 {
+    font-size: clamp(48px, 5vw, 72px);
+    letter-spacing: -2px;
+  }
+  .project-description {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 19px;
+    line-height: 1.45;
+  }
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    margin-top: 24px;
+    font: 15px/22px var(--mono);
+  }
+  .project-links a {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .project-output {
+    padding-top: 8px;
+    font-family: var(--mono);
+  }
+  .project-output p {
+    margin-bottom: 10px;
+    color: var(--subtle);
+    font-size: 13px;
+  }
+  dl {
+    margin: 0;
+    border-top: 1px solid var(--border);
+  }
+  dl div {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    line-height: 22px;
+  }
+  dt {
+    color: var(--subtle);
+    font-size: 14px;
+  }
+  dd {
+    margin: 0;
+  }
+  .project-preview {
+    margin-top: 48px;
+  }
+  .project-preview img {
+    width: 100%;
+    border-radius: 6px;
+  }
+  .project-preview.phones {
+    display: flex;
+    gap: 40px;
+  }
+  .phones img {
+    width: calc((100% - 120px) / 4);
+    max-width: 250px;
+    height: auto;
+    border-radius: 0;
+  }
+  .side .project-output {
+    grid-column: 1;
+    margin-top: 32px;
+  }
+  .side .project-preview {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    gap: 24px;
+    margin-top: 8px;
+    align-items: flex-start;
+  }
+  .side .phones img {
+    width: calc((100% - 72px) / 4);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .project-links a:hover {
+      color: var(--text);
+    }
+  }
+  @media (max-width: 900px) {
+    .project-body {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .project-output {
+      margin-top: 32px;
+    }
+    .side .project-preview {
+      grid-column: 1;
+      grid-row: auto;
+      margin-top: 32px;
+    }
+  }
+  @media (max-width: 700px) {
+    .project {
+      padding: 40px 0 48px;
+    }
+    h3,
+    .featured h3 {
+      font-size: 34px;
+      letter-spacing: -1px;
+    }
+    .project-description {
+      font-size: 17px;
+    }
+    dl div {
+      grid-template-columns: 96px minmax(0, 1fr);
+      font-size: 13px;
+    }
+    dt {
+      font-size: 12px;
+    }
+    .project-preview {
+      margin-top: 32px;
+    }
+    .project-preview.phones,
+    .side .project-preview {
+      gap: 8px;
+    }
+    .phones img,
+    .side .phones img {
+      width: calc((100% - 24px) / 4);
+    }
+  }
+</style>

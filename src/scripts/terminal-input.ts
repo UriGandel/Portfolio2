@@ -163,12 +163,17 @@ if (
     if (project) {
       const description =
         project.querySelector("[data-terminal-description]")?.textContent ?? "";
-      const stack =
-        project.querySelector("[data-terminal-stack]")?.textContent ?? "";
+      const output = Array.from(
+        project.querySelectorAll("[data-terminal-output] > div"),
+        (row) =>
+          Array.from(row.children, (part) => part.textContent?.trim()).join(
+            " · ",
+          ),
+      );
       const links = linksFrom(
         project.querySelector("[data-terminal-project-links]"),
       );
-      return [paragraph(description), paragraph(stack), list(links)];
+      return [paragraph(description), list(output), list(links)];
     }
 
     const file = files.find((entry) => entry.dataset.terminalFile === path);
@@ -194,7 +199,7 @@ if (
     const name = resolvePath(verb) === "contacto.sh" ? "contacto" : verb;
     const path = resolvePath(args[0] ?? "");
     const slug = path.startsWith("proyectos/")
-      ? path.slice(10).replace(/\.md$/, "")
+      ? path.slice(10).replace(/(\/readme)?\.md$/, "")
       : path;
     const project =
       args[0] && projects.includes(slug) ? document.getElementById(slug) : null;

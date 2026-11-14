@@ -1,15 +1,40 @@
-export const projects = [
+export interface Project {
+  slug: string;
+  name: string;
+  kind: string;
+  status: string;
+  year: string;
+  description: string;
+  stack: string;
+  featured?: boolean;
+  outputLabel: string;
+  output: [string, string][];
+  images: string[];
+  imageLabels: string[];
+  links: { label: string; href: string }[];
+}
+
+export const projects: Project[] = [
   {
     slug: "stepbystories",
     name: "StepByStories",
-    category: "APP DE IDIOMAS",
-    color: "purple",
     kind: "app para aprender idiomas",
     status: "publicada en iOS y Android",
     year: "2026",
     description:
       "Una app para aprender idiomas leyendo libros adaptados a tu nivel, con audio y herramientas de comprensión. La desarrollé y publiqué en iOS y Android, obteniendo los primeros usuarios y subscriptores pagos.",
     stack: "React Native · FastAPI · LLMs",
+    featured: true,
+    outputLabel: "historial",
+    output: [
+      ["2026-07", "publicada en iOS"],
+      ["2026-07-31", "pico de 48 usuarios activos en un día"],
+      ["2026-08-13", "publicada en Android"],
+      ["2026-08-13", "primera suscripción paga"],
+      ["idiomas", "6: inglés, español, francés, alemán, italiano, portugués"],
+      ["niveles", "A1 a C2"],
+      ["stack", "React Native · Expo · FastAPI · PostgreSQL · LLMs"],
+    ],
     images: [
       "stepbystories-1.png",
       "stepbystories-2.png",
@@ -22,26 +47,33 @@ export const projects = [
       "Biblioteca personal",
       "Lectura con audio y traducción",
     ],
-    links: [{ label: "Ver la app", href: "https://www.stepbystories.com" }],
+    links: [{ label: "ver la app", href: "https://www.stepbystories.com" }],
   },
   {
     slug: "hydroengine",
     name: "HydroEngine",
-    category: "MOTOR GRÁFICO",
-    color: "mint",
     kind: "motor gráfico",
     status: "proyecto personal",
     year: "",
     description:
       "Un motor de videojuegos en C++ y OpenGL construido desde cero para entender cómo funcionan los sistemas gráficos, la arquitectura de motores y el desarrollo de bajo nivel.",
     stack: "C++ · OpenGL · ECS",
+    outputLabel: "dependencias",
+    output: [
+      ["GLFW", "ventanas y entrada"],
+      ["GLAD", "funciones de OpenGL"],
+      ["GLM", "matemática 3D"],
+      ["Assimp", "importación de modelos"],
+      ["ImGui", "interfaz del editor"],
+      ["arquitectura", "Entity Component System"],
+    ],
     images: ["hydroengine.png"],
     imageLabels: [
       "Editor de HydroEngine con una escena 3D y herramientas de depuración",
     ],
     links: [
       {
-        label: "GitHub",
+        label: "github",
         href: "https://github.com/Alezito2008/HydroEngine/tree/Presentacion",
       },
     ],
@@ -49,19 +81,25 @@ export const projects = [
   {
     slug: "negocia",
     name: "NegocIA",
-    category: "PLATANUS HACK",
-    color: "amber",
     kind: "marketplace con agentes de IA",
     status: "hackathon, en equipo",
     year: "2026",
     description:
       "Una plataforma donde agentes de inteligencia artificial negocian entre sí para comprar y vender productos. Desarrollada durante Platanus Hack 2026.",
-    stack: "RAG · Embeddings · TypeScript · Docker · React",
+    stack: "TypeScript · React · RAG",
+    outputLabel: "flujo",
+    output: [
+      ["1", "el comprador describe qué busca y su presupuesto"],
+      ["2", "búsqueda semántica con embeddings y pgvector"],
+      ["3", "agente comprador y agente vendedor ofertan y contraofertan"],
+      ["4", "una persona revisa el acuerdo"],
+      ["stack", "Next.js · Express · TypeScript · PostgreSQL · Prisma"],
+    ],
     images: ["negocia.png"],
     imageLabels: ["Marketplace de NegocIA con agentes que negocian productos"],
     links: [
       {
-        label: "GitHub",
+        label: "github",
         href: "https://github.com/platanus-hack/platanus-hack-26-ar-team-19",
       },
     ],
@@ -69,19 +107,24 @@ export const projects = [
   {
     slug: "gravity-duel",
     name: "Gravity Duel",
-    category: "GANADOR DEL ARCADE CHALLENGE",
-    color: "green",
     kind: "juego arcade",
     status: "ganador del Arcade Challenge",
     year: "2026",
     description:
-      "Un videojuego multijugador competitivo desarrollado para el Arcade Challenge de Platanus Hack. Ganador del Platanus Hack Arcade Challenge 2026.",
+      "Un videojuego multijugador competitivo desarrollado para el Arcade Challenge de Platanus Hack.",
     stack: "1P vs IA · 2P local",
+    outputLabel: "resultado",
+    output: [
+      ["competencia", "Arcade Challenge, Platanus Hack 2026"],
+      ["puesto", "ganador"],
+      ["selección", "100 desarrolladores entre más de 400 postulantes"],
+      ["modos", "1P vs IA · 2P local"],
+    ],
     images: ["gravity-duel.png"],
     imageLabels: ["Partida de Gravity Duel, un duelo espacial con gravedad"],
     links: [
       {
-        label: "Jugar",
+        label: "jugar",
         href: "https://hack.platan.us/26/arcade/gravity-duel-final-ten",
       },
     ],
@@ -89,14 +132,20 @@ export const projects = [
   {
     slug: "traidx",
     name: "TraidX",
-    category: "IA FINANCIERA",
-    color: "mint",
     kind: "IA financiera",
     status: "en curso",
     year: "",
     description:
       "Estoy desarrollando una app que combina noticias, indicadores técnicos y datos del mercado para analizar inversiones.",
-    stack: "Modelos predictivos · Python · Docker",
+    stack: "Python · Docker",
+    outputLabel: "experimento",
+    output: [
+      ["clases", "3"],
+      ["acierto", "52 %"],
+      ["referencia", "33 %"],
+      ["modelos", "XGBoost · ElasticNet · PatchTST · FinBERT"],
+      ["estado", "en curso; el acierto no implica rentabilidad"],
+    ],
     images: ["traidx-1.png", "traidx-2.png", "traidx-3.png", "traidx-4.png"],
     imageLabels: [
       "Crear una inversión",
@@ -105,13 +154,11 @@ export const projects = [
       "Actividad y rendimiento",
     ],
     links: [
-      { label: "GitHub", href: "https://www.stepbystories.com/" },
+      { label: "github", href: "https://www.stepbystories.com/" },
       {
-        label: "Landing",
+        label: "landing",
         href: "https://hack.platan.us/26/arcade/gravity-duel-final-ten",
       },
     ],
   },
-] as const;
-
-export type Project = (typeof projects)[number];
+];
