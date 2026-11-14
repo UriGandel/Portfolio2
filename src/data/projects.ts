@@ -4,6 +4,9 @@ export const projects = [
     name: "StepByStories",
     category: "APP DE IDIOMAS",
     color: "purple",
+    kind: "app para aprender idiomas",
+    status: "publicada en iOS y Android",
+    year: "2026",
     description:
       "Una app para aprender idiomas leyendo libros adaptados a tu nivel, con audio y herramientas de comprensión. La desarrollé y publiqué en iOS y Android, obteniendo los primeros usuarios y subscriptores pagos.",
     stack: "React Native · FastAPI · LLMs",
@@ -26,6 +29,9 @@ export const projects = [
     name: "HydroEngine",
     category: "MOTOR GRÁFICO",
     color: "mint",
+    kind: "motor gráfico",
+    status: "proyecto personal",
+    year: "",
     description:
       "Un motor de videojuegos en C++ y OpenGL construido desde cero para entender cómo funcionan los sistemas gráficos, la arquitectura de motores y el desarrollo de bajo nivel.",
     stack: "C++ · OpenGL · ECS",
@@ -45,6 +51,9 @@ export const projects = [
     name: "NegocIA",
     category: "PLATANUS HACK",
     color: "amber",
+    kind: "marketplace con agentes de IA",
+    status: "hackathon, en equipo",
+    year: "2026",
     description:
       "Una plataforma donde agentes de inteligencia artificial negocian entre sí para comprar y vender productos. Desarrollada durante Platanus Hack 2026.",
     stack: "RAG · Embeddings · TypeScript · Docker · React",
@@ -62,6 +71,9 @@ export const projects = [
     name: "Gravity Duel",
     category: "GANADOR DEL ARCADE CHALLENGE",
     color: "green",
+    kind: "juego arcade",
+    status: "ganador del Arcade Challenge",
+    year: "2026",
     description:
       "Un videojuego multijugador competitivo desarrollado para el Arcade Challenge de Platanus Hack. Ganador del Platanus Hack Arcade Challenge 2026.",
     stack: "1P vs IA · 2P local",
@@ -79,6 +91,9 @@ export const projects = [
     name: "TraidX",
     category: "IA FINANCIERA",
     color: "mint",
+    kind: "IA financiera",
+    status: "en curso",
+    year: "",
     description:
       "Estoy desarrollando una app que combina noticias, indicadores técnicos y datos del mercado para analizar inversiones.",
     stack: "Modelos predictivos · Python · Docker",
