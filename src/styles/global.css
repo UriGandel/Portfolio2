@@ -178,13 +178,17 @@ img {
   background: var(--green);
   border-color: var(--green);
 }
-.button.secondary {
-  background: var(--surface);
+.text-link {
+  color: var(--green);
+  font: 15px/22px var(--mono);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  align-items: center;
+  gap: 16px 28px;
 }
 
 .hero {
@@ -220,32 +224,12 @@ h1 {
 .hero .primary {
   min-width: 216px;
 }
-.hero .secondary {
-  min-width: 140px;
-}
 .profile {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  margin-top: 5px;
   align-self: start;
-  overflow: hidden;
-}
-.profile-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 18px 25px;
-  border-bottom: 1px solid var(--border);
-  color: var(--muted);
-  font: 14px/18px var(--mono);
-}
-.profile-header span:last-child {
-  color: var(--subtle);
 }
 .pixel-mark {
-  margin: 4px auto 8px;
-  width: calc(100% - 48px);
   height: 173px;
+  margin-bottom: 20px;
   overflow: hidden;
 }
 .pixel-mark img {
@@ -267,6 +251,9 @@ h1 {
     border-color: var(--green);
     background: var(--surface);
     transform: translateY(-2px);
+  }
+  .text-link:hover {
+    color: var(--text);
   }
   .button.primary:hover {
     background: #d5ff99;
@@ -348,23 +335,12 @@ h1 {
   .hero .primary {
     min-width: 0;
   }
-  .hero .secondary {
-    min-width: 0;
-  }
   .button {
-    font-size: 12px;
-  }
-  .profile {
-    margin: 0;
-  }
-  .profile-header {
-    padding: 15px 18px;
     font-size: 12px;
   }
   .pixel-mark {
     height: 125px;
-    margin: 8px 16px 12px;
-    width: calc(100% - 32px);
+    margin-bottom: 12px;
   }
   .hero-divider {
     margin-top: 40px;

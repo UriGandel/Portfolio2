@@ -8,10 +8,6 @@ import { projects } from "../data/projects";
   aria-label="Terminal del portfolio"
   data-terminal
 >
-  <div class="profile-header">
-    <span class="shell-title">uriel@portfolio</span>
-    <span data-terminal-path>~/portfolio</span>
-  </div>
   <div class="pixel-mark">
     <img src="/images/ug-matrix.svg" width="514" height="173" alt="" />
   </div>
@@ -22,9 +18,32 @@ import { projects } from "../data/projects";
         <span>whoami</span>
       </p>
       <div data-response>
-        Uriel Gandelman · Buenos Aires
-        <br />
-        Desarrollador de software
+        <dl>
+          <div>
+            <dt>nombre</dt>
+            <dd>Uriel Gandelman</dd>
+          </div>
+          <div>
+            <dt>edad</dt>
+            <dd>18</dd>
+          </div>
+          <div>
+            <dt>ciudad</dt>
+            <dd>Buenos Aires, Argentina</dd>
+          </div>
+          <div>
+            <dt>estudio</dt>
+            <dd>TIC en ORT Argentina, último año</dd>
+          </div>
+          <div>
+            <dt>publicado</dt>
+            <dd>StepByStories, en iOS y Android</dd>
+          </div>
+          <div>
+            <dt>ahora</dt>
+            <dd>TraidX</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </div>
@@ -43,6 +62,7 @@ import { projects } from "../data/projects";
     </div>
     <form aria-label="Consola interactiva">
       <label for="terminal-command">
+        <span data-terminal-path>~/portfolio</span>
         <span aria-hidden="true">$</span>
         <span class="sr-only">Comando</span>
       </label>
@@ -86,21 +106,11 @@ import { projects } from "../data/projects";
 </script>
 
 <style>
-  .shell-title {
-    color: var(--green);
-  }
-  .profile-header {
-    flex-wrap: wrap;
-    gap: 6px 12px;
-  }
   .terminal-log {
-    border-top: 1px solid var(--border);
-    padding: 16px 24px;
-    min-height: 104px;
-    max-height: 240px;
+    max-height: 330px;
     overflow-y: auto;
     color: var(--text);
-    font: 13px/1.7 var(--mono);
+    font: 14px/1.6 var(--mono);
     overflow-wrap: anywhere;
   }
   [data-entry] + [data-entry] {
@@ -108,7 +118,24 @@ import { projects } from "../data/projects";
   }
   [data-prompt] {
     color: var(--green);
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+  }
+  dl {
+    margin: 0;
+    border-top: 1px solid var(--border);
+  }
+  dl div {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 16px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  dt {
+    color: var(--subtle);
+  }
+  dd {
+    margin: 0;
   }
   [data-response] :global(p + p),
   [data-response] :global(ul) {
@@ -134,7 +161,7 @@ import { projects } from "../data/projects";
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
-    padding: 0 24px 12px;
+    padding: 16px 0 12px;
   }
   button {
     cursor: pointer;
@@ -155,13 +182,16 @@ import { projects } from "../data/projects";
     display: flex;
     align-items: center;
     gap: 10px;
-    border-top: 1px solid var(--border);
-    background: var(--background);
-    padding: 5px 16px 5px 24px;
+    border-block: 1px solid var(--border);
   }
   label {
+    display: flex;
+    gap: 8px;
     color: var(--green);
     font: 14px var(--mono);
+  }
+  label [data-terminal-path] {
+    color: var(--subtle);
   }
   input {
     flex: 1;
@@ -187,12 +217,11 @@ import { projects } from "../data/projects";
     color: var(--text);
   }
   @media (max-width: 700px) {
-    .terminal-log,
-    .command-suggestions {
-      padding-inline: 15px;
+    .terminal-log {
+      font-size: 13px;
     }
-    form {
-      padding-inline: 15px;
+    dl div {
+      grid-template-columns: 90px minmax(0, 1fr);
     }
     input {
       font-size: 16px;
