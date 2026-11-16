@@ -239,14 +239,14 @@ if (
             response = [projectList.content.cloneNode(true)];
           } else if (path === "premios") {
             const awards = document.querySelectorAll(
-              "[data-terminal-awards] > div",
+              "[data-terminal-awards] tbody tr",
             );
             response = [
               list(
                 Array.from(awards, (award) =>
-                  Array.from(award.children, (part) =>
-                    part.textContent?.trim(),
-                  ).join(" — "),
+                  Array.from(award.children, (part) => part.textContent?.trim())
+                    .filter(Boolean)
+                    .join(" — "),
                 ),
               ),
             ];

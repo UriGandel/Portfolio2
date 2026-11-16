@@ -184,6 +184,29 @@ img {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+table {
+  width: 100%;
+  margin-top: 24px;
+  border-collapse: collapse;
+  font: 14px/22px var(--mono);
+  text-align: left;
+}
+th {
+  padding-bottom: 10px;
+  color: var(--subtle);
+  font-size: 12px;
+  font-weight: 400;
+}
+th,
+td {
+  padding-right: 20px;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding-block: 12px;
+  color: var(--muted);
+  vertical-align: top;
+}
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -305,6 +328,9 @@ h1 {
   }
   .prompt {
     width: 14px;
+  }
+  table {
+    font-size: 12px;
   }
   .hero {
     padding-top: 34px;

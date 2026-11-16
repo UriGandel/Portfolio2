@@ -24,6 +24,10 @@ import Command from "./Command.astro";
           Me interesan especialmente los sistemas, la inteligencia artificial y
           las startups.
         </p>
+        <p>
+          Soy educador no formal. Coordinar grupos me enseñó a liderar,
+          comunicar y trabajar en equipo.
+        </p>
       </div>
       <img
         class="hackathon-photo"
@@ -36,32 +40,54 @@ import Command from "./Command.astro";
       />
     </div>
   </div>
-  <div class="community">
-    <Command text="cat ./comunidad.md" />
-    <p data-terminal-file="comunidad.md">
-      Soy educador no formal. Coordinar grupos me enseñó a liderar, comunicar y
-      trabajar en equipo.
-    </p>
-  </div>
   <div class="awards">
-    <Command text="ls ./premios" />
-    <dl data-terminal-awards>
-      <div>
-        <dt>UdeSA AI Hackathon</dt>
-        <dd>1.er puesto · 2025</dd>
-      </div>
-      <div>
-        <dt>Platanus Hack</dt>
-        <dd>Ganador del Arcade Challenge · 2026</dd>
-      </div>
-    </dl>
+    <Command text="ls -l ./premios" />
+    <table data-terminal-awards>
+      <thead>
+        <tr>
+          <th>año</th>
+          <th>dónde</th>
+          <th>qué</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025</td>
+          <td>UdeSA AI Hackathon</td>
+          <td>1.er puesto</td>
+        </tr>
+        <tr>
+          <td>2026</td>
+          <td>Platanus Hack</td>
+          <td>
+            ganador del Arcade Challenge; 100 seleccionados entre más de 400
+          </td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>Instituto Balseiro, monografía</td>
+          <td>pasó la primera selección entre 591 presentaciones</td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>World ORT STEM Communication Award</td>
+          <td>Certificate of Commendation, video sobre el algoritmo A*</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Escuela de Madrijim Hacoaj</td>
+          <td>madrij certificado, camada 56</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
 <style>
   .about {
-    padding-top: 46px;
+    padding-top: 48px;
     padding-bottom: 74px;
+    border-top: 1px solid var(--border);
   }
   h2 {
     font-size: 76px;
@@ -93,43 +119,23 @@ import Command from "./Command.astro";
     aspect-ratio: 636 / 353;
     object-fit: cover;
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 6px;
     margin-top: -43px;
   }
-  .community {
-    margin-top: 53px;
-    padding-bottom: 35px;
-    border-bottom: 1px solid var(--border);
-  }
-  .community > p {
-    color: var(--muted);
-    font-size: 18px;
-    line-height: 1.55;
-    margin: 21px 0 0;
-  }
   .awards {
-    padding-top: 31px;
+    margin-top: 72px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
   }
-  dl {
-    margin: 23px 0 0;
+  td:first-child {
+    width: 104px;
   }
-  dl > div {
-    display: grid;
-    grid-template-columns: 456px 1fr;
-    gap: 0;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-    align-items: center;
+  td:nth-child(2) {
+    width: 34%;
+    color: var(--green);
   }
-  dt {
-    font-size: 21px;
-    font-weight: 500;
-    line-height: 26px;
-  }
-  dd {
-    margin: 0;
-    font: 16px/20px var(--mono);
-    color: var(--muted);
+  td:last-child {
+    color: var(--text);
   }
   @media (max-width: 1100px) {
     .about-grid {
@@ -138,10 +144,6 @@ import Command from "./Command.astro";
     .about-copy {
       font-size: 19px;
       line-height: 28px;
-    }
-    dl > div {
-      grid-template-columns: 38% 1fr;
-      gap: 20px;
     }
   }
   @media (max-width: 700px) {
@@ -168,25 +170,12 @@ import Command from "./Command.astro";
     .hackathon-photo {
       margin: 0;
     }
-    .community {
-      margin-top: 36px;
-      padding-bottom: 28px;
+    .awards {
+      margin-top: 40px;
+      padding-top: 40px;
     }
-    .community > p {
-      font-size: 17px;
-      line-height: 27px;
-      margin-top: 15px;
-    }
-    dl > div {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 8px;
-    }
-    dt {
-      font-size: 19px;
-    }
-    dd {
-      font-size: 12px;
-      line-height: 20px;
+    td:first-child {
+      width: 48px;
     }
   }
 </style>
