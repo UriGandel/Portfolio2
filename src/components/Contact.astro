@@ -7,24 +7,24 @@ import Command from "./Command.astro";
   <h2 id="contact-title">¿Construimos algo?</h2>
   <p>Si tenés un proyecto en mente o querés charlar, escribime.</p>
   <div class="actions" data-terminal-contact>
-    <a class="button primary" href="mailto:ugandelm@urielgandelman.dev">
-      Enviar un mail ↗
+    <a class="text-link" href="mailto:ugandelm@urielgandelman.dev">
+      enviar un mail
     </a>
     <a
-      class="button"
+      class="text-link"
       href="https://github.com/UriGandel"
       target="_blank"
       rel="noopener noreferrer"
     >
-      GitHub ↗
+      github
     </a>
     <a
-      class="button"
+      class="text-link"
       href="https://www.linkedin.com/in/uriel-gandelman/"
       target="_blank"
       rel="noopener noreferrer"
     >
-      LinkedIn ↗
+      linkedin
     </a>
   </div>
   <footer>
@@ -34,30 +34,25 @@ import Command from "./Command.astro";
 
 <style>
   .contact {
-    padding-top: 49px;
+    padding-top: 48px;
     padding-bottom: 43px;
+    border-top: 1px solid var(--border);
   }
   h2 {
     font-size: clamp(52px, 6.12vw, 88px);
     font-weight: 500;
     line-height: 1;
     letter-spacing: -2px;
-    margin: 49px 0 28px;
+    margin: 32px 0 28px;
   }
   .contact > p {
-    margin: 0 0 44px 5px;
+    margin: 0 0 36px 5px;
     color: var(--muted);
     font-size: 23px;
     line-height: 29px;
   }
   .actions {
     padding-left: 5px;
-  }
-  .actions .button:first-child {
-    min-width: 208px;
-  }
-  .actions .button {
-    min-width: 136px;
   }
   footer {
     border-top: 1px solid var(--border);
@@ -71,10 +66,6 @@ import Command from "./Command.astro";
     gap: 12px;
     color: var(--green);
     font: 15px/22px var(--mono);
-  }
-  footer .cursor {
-    width: 7px;
-    height: 16px;
   }
   @media (max-width: 700px) {
     .contact {
@@ -95,13 +86,6 @@ import Command from "./Command.astro";
     }
     .actions {
       padding-left: 0;
-      gap: 10px;
-    }
-    .actions .button {
-      min-width: 0;
-    }
-    .actions .button:first-child {
-      min-width: 0;
     }
     footer {
       margin-top: 32px;
