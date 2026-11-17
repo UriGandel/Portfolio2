@@ -244,9 +244,6 @@ h1 {
 .hero .actions {
   margin: 23px 0 0 5px;
 }
-.hero .primary {
-  min-width: 216px;
-}
 .profile {
   align-self: start;
 }
@@ -357,9 +354,6 @@ h1 {
   .hero .actions {
     margin-left: 0;
     gap: 10px;
-  }
-  .hero .primary {
-    min-width: 0;
   }
   .button {
     font-size: 12px;

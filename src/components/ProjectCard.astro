@@ -141,7 +141,7 @@ const sidePreview = phones && !project.featured;
     margin-top: 48px;
   }
   .project-preview img {
-    width: 100%;
+    max-height: 460px;
     border-radius: 6px;
   }
   .project-preview.phones {
@@ -151,7 +151,7 @@ const sidePreview = phones && !project.featured;
   .phones img {
     width: calc((100% - 120px) / 4);
     max-width: 250px;
-    height: auto;
+    max-height: none;
     border-radius: 0;
   }
   .side .project-output {
