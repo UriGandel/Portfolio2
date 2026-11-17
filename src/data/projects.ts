@@ -161,4 +161,24 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "womens-healthbench",
+    name: "Women’s HealthBench",
+    kind: "benchmark de modelos",
+    status: "hackathon",
+    year: "2026",
+    description:
+      "Un benchmark para evaluar modelos de IA con datos de salud femenina. Hecho en el Hack-Nation Global AI Hackathon, julio de 2026.",
+    stack: "evaluación con macro-F1",
+    outputLabel: "evaluación",
+    output: [
+      ["v0.1", "macro-F1 0,307"],
+      ["v0.2", "macro-F1 0,270"],
+      ["participantes", "42"],
+      ["días de datos", "5.398"],
+    ],
+    images: [],
+    imageLabels: [],
+    links: [],
+  },
 ];

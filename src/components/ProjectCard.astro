@@ -22,13 +22,15 @@ const sidePreview = phones && !project.featured;
       <p class="project-description" data-terminal-description>
         {project.description}
       </p>
-      <div class="project-links" data-terminal-project-links>
-        {project.links.map((link) => (
-          <a href={link.href} target="_blank" rel="noopener noreferrer">
-            {link.label}
-          </a>
-        ))}
-      </div>
+      {project.links.length > 0 && (
+        <div class="project-links" data-terminal-project-links>
+          {project.links.map((link) => (
+            <a href={link.href} target="_blank" rel="noopener noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
     <div class="project-output">
       <p>{project.outputLabel}</p>
