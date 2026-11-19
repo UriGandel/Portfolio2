@@ -14,6 +14,7 @@ const sidePreview = phones && !project.featured;
   id={project.slug}
   class:list={["project", { featured: project.featured, side: sidePreview }]}
   aria-labelledby={`${project.slug}-title`}
+  data-reveal
 >
   <Command text={`cat ./proyectos/${project.slug}/README.md`} />
   <div class="project-body">

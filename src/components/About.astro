@@ -2,7 +2,7 @@
 import Command from "./Command.astro";
 ---
 
-<section id="sobre-mi" class="about" aria-labelledby="about-title">
+<section id="sobre-mi" class="about" aria-labelledby="about-title" data-reveal>
   <div>
     <Command text="cat ./sobre-mi.md" />
     <h2 id="about-title">Sobre mí</h2>
@@ -40,7 +40,7 @@ import Command from "./Command.astro";
       />
     </div>
   </div>
-  <div class="awards">
+  <div class="awards" data-reveal>
     <Command text="ls -l ./premios" />
     <table data-terminal-awards>
       <thead>

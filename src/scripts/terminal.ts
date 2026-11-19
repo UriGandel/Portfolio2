@@ -25,6 +25,20 @@ function updateLocation() {
   }
 }
 
+const revealed = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add("is-visible");
+      revealed.unobserve(entry.target);
+    }
+  },
+  { rootMargin: "0px 0px -12% 0px" },
+);
+for (const block of document.querySelectorAll("[data-reveal]")) {
+  revealed.observe(block);
+}
+
 let scrollPending = false;
 window.addEventListener(
   "scroll",
